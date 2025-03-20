@@ -40,6 +40,21 @@ func (s *CosmosDBService) BindCosmosDB(ctx context.Context, name, resourceGroup,
 	return nil
 }
 
+// BindCosmosDBToUser assigns the CosmosDB Data Contributor role to a user identified by their principalID
+func (s *CosmosDBService) BindCosmosDBToUser(ctx context.Context, name, resourceGroup, userPrincipalID string) error {
+	if err := s.validateCosmosDBAccount(name, resourceGroup); err != nil {
+		return err
+	}
+
+	if err := s.assignRoleToCosmosDB(userPrincipalID, name, resourceGroup); err != nil {
+		return err
+	}
+
+	fmt.Printf("Successfully bound CosmosDB '%s' to user with ID '%s'\n", name, userPrincipalID)
+
+	return nil
+}
+
 func (s *CosmosDBService) validateCosmosDBAccount(name, resourceGroup string) error {
 	cmd := exec.Command(
 		"az", "cosmosdb", "check-name-exists",
