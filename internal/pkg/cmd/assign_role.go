@@ -36,7 +36,7 @@ func newBindCosmosDBCommand() *cobra.Command {
   spin azure assign-role cosmosdb --name my-cosmos
 
   # Assign the CosmosDB Data Contributor role to a user
-  spin azure assign-role cosmosdb --name my-cosmos --resource-group my-rg --user-id user@example.com
+  spin azure assign-role cosmosdb --name my-cosmos --resource-group my-rg --user-identity user@example.com
 
   # Assign the CosmosDB Data Contributor role to a managed identity
   spin azure assign-role cosmosdb --name my-cosmos --resource-group my-rg --identity my-identity --identity-resource-group my-identity-rg`,

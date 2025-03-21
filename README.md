@@ -123,7 +123,7 @@ spin azure cluster install-spin-operator
 
 Note: the `spin azure cluster create` command also installs the Spin Operator by default.
 
-### Assign Role to Azure CosmosDB
+### Assign the CosmosDB Data Contributor Role to a Managed Identity
 
 ```bash
 spin azure assign-role cosmosdb --name my-cosmos --resource-group my-rg # will assign the role to the identity called "workload-identity"
@@ -136,6 +136,14 @@ spin azure assign-role cosmosdb --name my-cosmos --resource-group my-rg --identi
 ```
 
 This assigns the necessary RBAC roles to your workload identity, allowing it to access the specified CosmosDB instance.
+
+### Assign the CosmosDB Data Contributor Role to a User
+
+```bash
+spin azure assign-role cosmosdb --name my-cosmos --resource-group my-rg --user-identity user@example.com
+```
+
+This assigns the necessary RBAC roles to the specified user identity, allowing it to access the specified CosmosDB instance.
 
 ### Deploy a Spin application
 
