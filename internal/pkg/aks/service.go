@@ -228,7 +228,7 @@ func (s *Service) DeploySpinOperator(ctx context.Context) error {
 	fmt.Println("Installing Spin Operator Custom Resource Definitions...")
 	crdsCmd := exec.Command(
 		"kubectl", "apply", "-f",
-		"https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml",
+		"https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.crds.yaml",
 	)
 
 	output, err = crdsCmd.CombinedOutput()
@@ -239,7 +239,7 @@ func (s *Service) DeploySpinOperator(ctx context.Context) error {
 	fmt.Println("Installing Spin Operator Runtime Class...")
 	runtimeClassCmd := exec.Command(
 		"kubectl", "apply", "-f",
-		"https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.runtime-class.yaml",
+		"https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.runtime-class.yaml",
 	)
 
 	output, err = runtimeClassCmd.CombinedOutput()
@@ -339,9 +339,9 @@ func (s *Service) DeploySpinOperator(ctx context.Context) error {
 		"helm", "install", "spin-operator",
 		"--namespace", "spin-operator",
 		"--create-namespace",
-		"--version", "0.4.0",
+		"--version", "0.5.0",
 		"--wait",
-		"oci://ghcr.io/spinkube/charts/spin-operator",
+		"oci://ghcr.io/spinframework/charts/spin-operator",
 	)
 
 	output, err = installSpinOpCmd.CombinedOutput()
@@ -352,7 +352,7 @@ func (s *Service) DeploySpinOperator(ctx context.Context) error {
 	fmt.Println("Applying shim executor configuration...")
 	shimExecutorCmd := exec.Command(
 		"kubectl", "apply", "-f",
-		"https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml",
+		"https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.shim-executor.yaml",
 	)
 
 	output, err = shimExecutorCmd.CombinedOutput()
