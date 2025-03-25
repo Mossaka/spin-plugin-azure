@@ -1,0 +1,21 @@
+apiVersion: core.spinkube.dev/v1alpha1
+kind: SpinApp
+metadata:
+  name: cosmosworkload
+spec:
+  image: "ghcr.io/squillace/cosmosworkload:0.1.0"
+  executor: containerd-shim-spin
+  replicas: 2
+  podLabels:
+    azure.workload.identity/use: "true"
+  runtimeConfig:
+    loadFromSecret: cosmosworkload-runtime-config
+  serviceAccountName: workload-identity
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cosmosworkload-runtime-config
+type: Opaque
+data:
+  runtime-config.toml: W2tleV92YWx1ZV9zdG9yZS5kZWZhdWx0XQp0eXBlID0gImF6dXJlX2Nvc21vcyIKYWNjb3VudCA9ICJzcGluLWt2LWNvc21vcy1kYi1rNXcwNGh3dyIKZGF0YWJhc2UgPSAic3BpbiIKY29udGFpbmVyID0gImtleXMtYW5kLXZhbHVlcyIKZW52aXJvbm1lbnRhbC1hdXRoID0gInRydWUi
