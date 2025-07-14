@@ -3,7 +3,7 @@ module github.com/spinframework/spin-plugin-azure
 go 1.23.4
 
 require (
-	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.18.0
+	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.18.1
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.9.0
 	github.com/spf13/cobra v1.9.1
 )
